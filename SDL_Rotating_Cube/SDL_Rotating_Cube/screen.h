@@ -11,6 +11,7 @@
 
 class Screen {
 public:
+    //struct for a point(pixel) on the screen
     struct FPoint
     {
         float x;
@@ -26,6 +27,7 @@ public:
         float x, y,z;
     };
     
+    //structure for a connection between 2 points
     struct conn{
         int a;
         int b;
@@ -36,9 +38,10 @@ public:
     SDL_Renderer* renderer;
     std::vector<FPoint> points; //floating point numbers FPOINT
     
+    //set up display and size
     Screen(){
         SDL_Init(SDL_INIT_VIDEO);
-        SDL_CreateWindowAndRenderer(640*2, 480*2, 0, &window, &renderer);
+        SDL_CreateWindowAndRenderer(640, 640, 0, &window, &renderer);
         SDL_RenderSetScale(renderer, 2, 2);
     }
     
@@ -46,6 +49,7 @@ public:
         points.emplace_back(x,y); // creates a new point struct, adds to point vector
     }
     
+    //renders the points(color) and displays them in the screen(blk background)
     void show(){
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
@@ -61,7 +65,7 @@ public:
     void clear(){
         points.clear(); // empty the vector
     }
-    
+    //input to exit
     void input(){
         while(SDL_PollEvent(&e)){
             if (e.type == SDL_QUIT) {
@@ -69,7 +73,7 @@ public:
             }
         }
     }
-    
+    //rotates the function in a 3d space
     void rotate(vec3& point, float x = 1, float y = 1, float z = 1) {
         float rad = 0;
         
@@ -89,7 +93,7 @@ public:
         
     }
 
-
+    //algo for drawing the line between 2 points
     void line(Screen& screen, float x1, float y1, float x2, float y2){
         
         float dx = x2 - x1;
