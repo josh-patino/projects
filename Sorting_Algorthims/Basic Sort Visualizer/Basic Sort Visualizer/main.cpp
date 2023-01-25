@@ -47,8 +47,8 @@ int main(int argc, const char * argv[]) {
     
     //sounds
     //           frequency, default format, (mono 1 stereo 2, chunksize(normal 1024))
-    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
-    Mix_Chunk* airSound = Mix_LoadWAV("/Users/joshuapatino/Desktop/projects/projects/Sorting_Algorthims/Sounds/dot_se.wav");
+    Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1024);
+    Mix_Chunk* airSound = Mix_LoadWAV("/Users/joshuapatino/Desktop/projects/projects/Sorting/Algorthims/Sounds/air_sound.wav");
     if(!airSound) {
         std::cout << "Error: " << Mix_GetError() << std::endl;
     }
@@ -87,7 +87,7 @@ int main(int argc, const char * argv[]) {
             draw_state(randList, renderer, i, j);
             //show to window and delay 10 ms
             SDL_RenderPresent(renderer);
-            SDL_Delay(10);
+            SDL_Delay(1);
         }
         Mix_PlayChannel(-1, airSound, 0);
     }
