@@ -12,12 +12,14 @@
 #include <algorithm>
 #include <SDL2_mixer/SDL_mixer.h>
 #include "screen.h"
+#include <SDL2_ttf/SDL_ttf.h>
 
 int Partition(std::vector<int> &v, int start, int end);
 void Quicksort(std::vector<int> &v, int start, int end );
 void PrintVector(std::vector<int> v);
 Screen screen;
 int intit2 = Mix_Init(0);
+int intit3 = TTF_Init(); 
 
 
 

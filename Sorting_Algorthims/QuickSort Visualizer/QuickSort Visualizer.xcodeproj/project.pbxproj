@@ -10,6 +10,7 @@
 		A00912D62981969300485910 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A00912D52981969300485910 /* main.cpp */; };
 		A00912DF298196DA00485910 /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A00912DE298196DA00485910 /* SDL2_mixer.framework */; };
 		A00912E1298196F400485910 /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A00912E0298196F400485910 /* SDL2.framework */; };
+		A0B721042983271E0049CEE7 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0B721032983271E0049CEE7 /* SDL2_ttf.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -30,6 +31,7 @@
 		A00912DC298196A500485910 /* screen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = screen.h; sourceTree = "<group>"; };
 		A00912DE298196DA00485910 /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = ../../../../../../../Library/Frameworks/SDL2_mixer.framework; sourceTree = "<group>"; };
 		A00912E0298196F400485910 /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
+		A0B721032983271E0049CEE7 /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../../../../Volumes/SDL2_ttf/SDL2_ttf.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A0B721042983271E0049CEE7 /* SDL2_ttf.framework in Frameworks */,
 				A00912E1298196F400485910 /* SDL2.framework in Frameworks */,
 				A00912DF298196DA00485910 /* SDL2_mixer.framework in Frameworks */,
 			);
@@ -74,6 +77,7 @@
 		A00912DD298196DA00485910 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A0B721032983271E0049CEE7 /* SDL2_ttf.framework */,
 				A00912E0298196F400485910 /* SDL2.framework */,
 				A00912DE298196DA00485910 /* SDL2_mixer.framework */,
 			);
