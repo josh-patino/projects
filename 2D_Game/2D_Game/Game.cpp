@@ -8,9 +8,13 @@
 #include "Game.hpp"
 #include "TextureManager.hpp"
 #include "GameObject.hpp"
+#include "Map.hpp"
 
+//current possible game objects
 GameObject* player;
 GameObject* enemy;
+Map* map;
+
 SDL_Renderer* Game::renderer = nullptr; 
 
 Game::Game(){
@@ -45,9 +49,9 @@ void Game::init(const std::string& title, int xposition, int yposition, int widt
         std::cerr << "SDL Library did NOT initilize!!" << std::endl;
     }
     
-    player = new GameObject("/Users/joshuapatino/Downloads/mario.png",50,50);
-    enemy = new GameObject("/Users/joshuapatino/Downloads/goomba.png",0,0);
-    
+    player = new GameObject("/Users/joshuapatino/Desktop/projects/projects/Resources/mario.png",50,50);
+    enemy = new GameObject("/Users/joshuapatino/Desktop/projects/projects/Resources/goomba.png",0,0);
+    map = new Map();
     
 }
 void Game::pollEvents(){
@@ -71,7 +75,8 @@ void Game::render(){
     SDL_RenderClear(renderer);
     //render stuff
     //painters algorithm, render/paint the back most element first, until getting to the player
-    player->Render();
+    map->DrawMap(); // draws first
+    player->Render(); // second etc
     enemy->Render();
     SDL_RenderPresent(renderer);
 }

@@ -15,6 +15,7 @@
 		A038C4B8298DC13300AD7CE2 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A038C4B6298DC13300AD7CE2 /* Game.cpp */; };
 		A04AAA44299195F800890E17 /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A04AAA42299195F800890E17 /* TextureManager.cpp */; };
 		A04AAA472991986400890E17 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A04AAA452991986400890E17 /* GameObject.cpp */; };
+		A04AAA4A2992E76500890E17 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A04AAA482992E76500890E17 /* Map.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +44,8 @@
 		A04AAA43299195F800890E17 /* TextureManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TextureManager.hpp; sourceTree = "<group>"; };
 		A04AAA452991986400890E17 /* GameObject.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = GameObject.cpp; sourceTree = "<group>"; };
 		A04AAA462991986400890E17 /* GameObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
+		A04AAA482992E76500890E17 /* Map.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
+		A04AAA492992E76500890E17 /* Map.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Map.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +86,8 @@
 			children = (
 				A038C4A6298DC01B00AD7CE2 /* main.cpp */,
 				A038C4B6298DC13300AD7CE2 /* Game.cpp */,
+				A04AAA482992E76500890E17 /* Map.cpp */,
+				A04AAA492992E76500890E17 /* Map.hpp */,
 				A038C4B7298DC13300AD7CE2 /* Game.hpp */,
 				A04AAA42299195F800890E17 /* TextureManager.cpp */,
 				A04AAA43299195F800890E17 /* TextureManager.hpp */,
@@ -161,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A04AAA472991986400890E17 /* GameObject.cpp in Sources */,
+				A04AAA4A2992E76500890E17 /* Map.cpp in Sources */,
 				A038C4A7298DC01B00AD7CE2 /* main.cpp in Sources */,
 				A038C4B8298DC13300AD7CE2 /* Game.cpp in Sources */,
 				A04AAA44299195F800890E17 /* TextureManager.cpp in Sources */,

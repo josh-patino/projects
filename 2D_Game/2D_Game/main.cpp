@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include "Game.hpp"
+#include <vector>
 
 Game *game = nullptr; // instance object
 
