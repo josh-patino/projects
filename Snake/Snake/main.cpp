@@ -19,7 +19,7 @@ int main(int argc, const char * argv[]) {
     //init
     TTF_Init();
     SDL_Init(SDL_INIT_EVERYTHING);
-    int init2 = Mix_Init(0);
+    //int init2 = Mix_Init(0);
     
     //window
     auto window = SDL_CreateWindow("Simple Snake Game",
@@ -27,8 +27,8 @@ int main(int argc, const char * argv[]) {
     auto renderer = SDL_CreateRenderer(window, -1, 0);
     
     //text
-    TTF_Font* font = TTF_OpenFont("/Users/joshuapatino/Desktop/projects/projects/Resources/Acme-Regular.ttf", 50);
-    SDL_Surface* textSurf = TTF_RenderText_Solid(font, "Game Over", {255,255,255});
+    TTF_Font* font = TTF_OpenFont("/System/Library/Fonts/Supplemental/Georgia.ttf", 50);
+    SDL_Surface* textSurf = TTF_RenderText_Solid(font, "Game Over", {255,0,0,255});
     SDL_Texture * textTexture = SDL_CreateTextureFromSurface(renderer, textSurf);
     
     SDL_Rect textRect = {275,375,textSurf->w,textSurf->h};
@@ -51,6 +51,9 @@ int main(int argc, const char * argv[]) {
     const int MIN = 0;
     const int MAX = 800;
     
+    //apple counter
+    int apple_count = 0;
+    
     enum Direction{
         DOWN, LEFT, RIGHT, UP
     };
@@ -68,7 +71,7 @@ int main(int argc, const char * argv[]) {
     std::vector<SDL_Rect> apples;
     
     // creation of apples
-    for (int i = 0; i < 150; i++) {
+    for (int i = 0; i < 100; i++) {
         
         apples.push_back({rand()%80*10, rand()%80*10,10,10}); // push back ({})
     }
@@ -100,7 +103,7 @@ int main(int argc, const char * argv[]) {
                 head.x += 10;
                 break;
         }
-        std::cout << "X: " << head.x << " Y: " << head.y<<std::endl;
+        //std::cout << "X: " << head.x << " Y: " << head.y<<std::endl;
         //Out of Bounds
         if (head.x >= MAX || head.x <= MIN || head.y >= MAX || head.y <= MIN) {
             std::cout << "you died" << std::endl;
@@ -118,6 +121,9 @@ int main(int argc, const char * argv[]) {
                 apple.x = -10;
                 apple.y = -10;
                 Mix_PlayChannel(-1, eating_sound, 0);
+                apples.push_back({rand()%80*10, rand()%80*10,10,10}); // push back ({})
+                apple_count++;
+                std::cout << "Score is: " << apple_count << std::endl;
             }
         });
         //collison detect, snake and itself
