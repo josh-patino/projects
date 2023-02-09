@@ -27,12 +27,12 @@ public:
     inline bool running() {return _isRunning; }
     
     static SDL_Renderer* renderer;
+    static SDL_Event event; 
     
 private:
     int _gameCounter; 
     bool _isRunning;
     SDL_Window* _window;
-    SDL_Event _event;
 };
 
 

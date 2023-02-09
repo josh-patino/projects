@@ -16,6 +16,12 @@
 		A04AAA44299195F800890E17 /* TextureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A04AAA42299195F800890E17 /* TextureManager.cpp */; };
 		A04AAA472991986400890E17 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A04AAA452991986400890E17 /* GameObject.cpp */; };
 		A04AAA4A2992E76500890E17 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A04AAA482992E76500890E17 /* Map.cpp */; };
+		A0A24DB5299452AD0060F6C2 /* EntityComponentSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DB3299452AD0060F6C2 /* EntityComponentSystem.cpp */; };
+		A0A24DB8299452D00060F6C2 /* Components.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DB6299452D00060F6C2 /* Components.cpp */; };
+		A0A24DBC299560130060F6C2 /* SpriteComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DBA299560130060F6C2 /* SpriteComponent.cpp */; };
+		A0A24DBF2995611B0060F6C2 /* PositionComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DBD2995611B0060F6C2 /* PositionComponent.cpp */; };
+		A0A24DC2299594070060F6C2 /* Vector2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DC0299594070060F6C2 /* Vector2D.cpp */; };
+		A0A24DC52995A09D0060F6C2 /* KeyboardController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DC32995A09D0060F6C2 /* KeyboardController.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +52,18 @@
 		A04AAA462991986400890E17 /* GameObject.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = GameObject.hpp; sourceTree = "<group>"; };
 		A04AAA482992E76500890E17 /* Map.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
 		A04AAA492992E76500890E17 /* Map.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Map.hpp; sourceTree = "<group>"; };
+		A0A24DB3299452AD0060F6C2 /* EntityComponentSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EntityComponentSystem.cpp; sourceTree = "<group>"; };
+		A0A24DB4299452AD0060F6C2 /* EntityComponentSystem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EntityComponentSystem.hpp; sourceTree = "<group>"; };
+		A0A24DB6299452D00060F6C2 /* Components.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Components.cpp; sourceTree = "<group>"; };
+		A0A24DB7299452D00060F6C2 /* Components.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Components.hpp; sourceTree = "<group>"; };
+		A0A24DBA299560130060F6C2 /* SpriteComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteComponent.cpp; sourceTree = "<group>"; };
+		A0A24DBB299560130060F6C2 /* SpriteComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpriteComponent.hpp; sourceTree = "<group>"; };
+		A0A24DBD2995611B0060F6C2 /* PositionComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PositionComponent.cpp; sourceTree = "<group>"; };
+		A0A24DBE2995611B0060F6C2 /* TransformComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TransformComponent.hpp; sourceTree = "<group>"; };
+		A0A24DC0299594070060F6C2 /* Vector2D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2D.cpp; sourceTree = "<group>"; };
+		A0A24DC1299594070060F6C2 /* Vector2D.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vector2D.hpp; sourceTree = "<group>"; };
+		A0A24DC32995A09D0060F6C2 /* KeyboardController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KeyboardController.cpp; sourceTree = "<group>"; };
+		A0A24DC42995A09D0060F6C2 /* KeyboardController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = KeyboardController.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +102,7 @@
 		A038C4A5298DC01B00AD7CE2 /* 2D_Game */ = {
 			isa = PBXGroup;
 			children = (
+				A0A24DB929955FB40060F6C2 /* ECS */,
 				A038C4A6298DC01B00AD7CE2 /* main.cpp */,
 				A038C4B6298DC13300AD7CE2 /* Game.cpp */,
 				A04AAA482992E76500890E17 /* Map.cpp */,
@@ -106,6 +125,25 @@
 				A038C4B1298DC06300AD7CE2 /* SDL2.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A0A24DB929955FB40060F6C2 /* ECS */ = {
+			isa = PBXGroup;
+			children = (
+				A0A24DB7299452D00060F6C2 /* Components.hpp */,
+				A0A24DB6299452D00060F6C2 /* Components.cpp */,
+				A0A24DB4299452AD0060F6C2 /* EntityComponentSystem.hpp */,
+				A0A24DB3299452AD0060F6C2 /* EntityComponentSystem.cpp */,
+				A0A24DBA299560130060F6C2 /* SpriteComponent.cpp */,
+				A0A24DBB299560130060F6C2 /* SpriteComponent.hpp */,
+				A0A24DBD2995611B0060F6C2 /* PositionComponent.cpp */,
+				A0A24DBE2995611B0060F6C2 /* TransformComponent.hpp */,
+				A0A24DC0299594070060F6C2 /* Vector2D.cpp */,
+				A0A24DC1299594070060F6C2 /* Vector2D.hpp */,
+				A0A24DC32995A09D0060F6C2 /* KeyboardController.cpp */,
+				A0A24DC42995A09D0060F6C2 /* KeyboardController.hpp */,
+			);
+			path = ECS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,9 +205,15 @@
 			files = (
 				A04AAA472991986400890E17 /* GameObject.cpp in Sources */,
 				A04AAA4A2992E76500890E17 /* Map.cpp in Sources */,
+				A0A24DB8299452D00060F6C2 /* Components.cpp in Sources */,
 				A038C4A7298DC01B00AD7CE2 /* main.cpp in Sources */,
 				A038C4B8298DC13300AD7CE2 /* Game.cpp in Sources */,
 				A04AAA44299195F800890E17 /* TextureManager.cpp in Sources */,
+				A0A24DBC299560130060F6C2 /* SpriteComponent.cpp in Sources */,
+				A0A24DBF2995611B0060F6C2 /* PositionComponent.cpp in Sources */,
+				A0A24DC2299594070060F6C2 /* Vector2D.cpp in Sources */,
+				A0A24DC52995A09D0060F6C2 /* KeyboardController.cpp in Sources */,
+				A0A24DB5299452AD0060F6C2 /* EntityComponentSystem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

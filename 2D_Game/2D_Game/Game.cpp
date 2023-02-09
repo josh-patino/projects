@@ -7,15 +7,18 @@
 
 #include "Game.hpp"
 #include "TextureManager.hpp"
-#include "GameObject.hpp"
 #include "Map.hpp"
+#include "ECS/Components.hpp"
+#include "Vector2D.hpp"
 
 //current possible game objects
-GameObject* player;
-GameObject* enemy;
+
 Map* map;
 
-SDL_Renderer* Game::renderer = nullptr; 
+SDL_Renderer* Game::renderer = nullptr;
+SDL_Event Game::event;
+Manager manager;
+auto& player(manager.addEntity());
 
 Game::Game(){
     
@@ -49,14 +52,17 @@ void Game::init(const std::string& title, int xposition, int yposition, int widt
         std::cerr << "SDL Library did NOT initilize!!" << std::endl;
     }
     
-    player = new GameObject("/Users/joshuapatino/Desktop/projects/projects/Resources/mario.png",50,50);
-    enemy = new GameObject("/Users/joshuapatino/Desktop/projects/projects/Resources/goomba.png",0,0);
     map = new Map();
+    //ecs
+    player.addComponent<TransformComponent>();
+    std::cout<<"Player is at 100,100" << std::endl;
+    player.addComponent<SpriteComponent>("/Users/joshuapatino/Desktop/projects/projects/Resources/mario.png");
+    player.addComponent<KeyboardController>();
     
 }
 void Game::pollEvents(){
-    SDL_PollEvent(&_event);
-    switch (_event.type) {
+    SDL_PollEvent(&event);
+    switch (event.type) {
         case SDL_QUIT:
             _isRunning = false;
             break;
@@ -67,17 +73,25 @@ void Game::pollEvents(){
 }
 
 void Game::updateGame(){
-    player->Update();
-    enemy->Update();
+    manager.refresh();//7
+    manager.update(); //7
+    
+    
+    // if player coord greater than 100, .setTex \
+    //for dying animation?
+    //player.getComponent<TransformComponent>().position_vector.Add(Vector2D(5,0));
+//    if (player.getComponent<TransformComponent>().position_vector.x > 100 ) {
+//        std::cout << "Player is greater than 100";
+//    }
+    
 }
 
 void Game::render(){
     SDL_RenderClear(renderer);
     //render stuff
     //painters algorithm, render/paint the back most element first, until getting to the player
-    map->DrawMap(); // draws first
-    player->Render(); // second etc
-    enemy->Render();
+    map->DrawMap();
+    manager.draw(); 
     SDL_RenderPresent(renderer);
 }
 
