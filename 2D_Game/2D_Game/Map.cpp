@@ -48,6 +48,13 @@ Map::Map(){
     
 }
 
+Map::~Map(){ //destroy textures render
+    SDL_DestroyTexture(_dirt);
+    SDL_DestroyTexture(_water);
+    SDL_DestroyTexture(_grass);
+
+}
+
 void Map::LoadMap(std::vector<std::vector<int>> vectorMap){//traverse the map 
     for (int row = 0; row < 20; row++) {
         for(int column = 0; column < 25; column++){

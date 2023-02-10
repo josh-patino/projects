@@ -21,9 +21,12 @@ public:
     SpriteComponent(const char* path){
         setTexture(path);
     }
+    ~SpriteComponent() {
+        SDL_DestroyTexture(_texture);
+    }
     
     void setTexture(const char* path) {
-        SDL_DestroyTexture(_texture);
+        //SDL_DestroyTexture(_texture);
         _texture = TextureManager::LoadTexture(path);
     }
     
@@ -32,15 +35,16 @@ public:
         _transform = &entity->getComponent<TransformComponent>();
         
         _sourceRect.x  = _sourceRect.y = 0;
-        _sourceRect.w = _sourceRect.h = 32;
-        
-        _destinationRect.w = _destinationRect.h = 64;
+        _sourceRect.w = _transform->width;
+        _sourceRect.h = _transform->height;
         
     }
     
     void update() override {
-        _destinationRect.x = (int)_transform->position_vector.x;//returns x from positioncomponent
-        _destinationRect.y = (int)_transform->position_vector.y; // returns y from vector2d
+        _destinationRect.x = static_cast<int>(_transform->position_vector.x);//returns x from positioncomponent
+        _destinationRect.y = static_cast<int>(_transform->position_vector.y); // returns y from vector2d
+        _destinationRect.w = _transform->width * _transform->scale;
+        _destinationRect.h = _transform->height * _transform->scale;
     }
     void draw() override {
         TextureManager::Draw(_texture, _sourceRect, _destinationRect);

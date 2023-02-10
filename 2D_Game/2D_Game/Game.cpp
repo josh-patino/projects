@@ -10,6 +10,7 @@
 #include "Map.hpp"
 #include "ECS/Components.hpp"
 #include "Vector2D.hpp"
+#include "Collision.hpp"
 
 //current possible game objects
 
@@ -18,6 +19,8 @@ Map* map;
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 Manager manager;
+
+auto& wall(manager.addEntity());
 auto& player(manager.addEntity());
 
 Game::Game(){
@@ -53,11 +56,17 @@ void Game::init(const std::string& title, int xposition, int yposition, int widt
     }
     
     map = new Map();
-    //ecs
-    player.addComponent<TransformComponent>();
+    //Entity Componenet System Implemnation
+    player.addComponent<TransformComponent>(2);
     std::cout<<"Player is at 100,100" << std::endl;
     player.addComponent<SpriteComponent>("/Users/joshuapatino/Desktop/projects/projects/Resources/mario.png");
     player.addComponent<KeyboardController>();
+    player.addComponent<ColliderComponent>("player"); 
+    
+    wall.addComponent<TransformComponent>(320.0f,320.f, 32, 32, 1);
+    wall.addComponent<SpriteComponent>("/Users/joshuapatino/Desktop/projects/projects/Resources/dirt.png");
+    wall.addComponent<ColliderComponent>("wall");
+    
     
 }
 void Game::pollEvents(){
@@ -75,6 +84,14 @@ void Game::pollEvents(){
 void Game::updateGame(){
     manager.refresh();//7
     manager.update(); //7
+    
+    if (Collision::AABB(player.getComponent<ColliderComponent>().boxCollider, wall.getComponent<ColliderComponent>().boxCollider)) {
+        player.getComponent<TransformComponent>().scale = 1;
+        player.getComponent<TransformComponent>().velocity_vector * -1; 
+        std::cout << "player hit the wall" << std::endl;
+        //player.destroy();
+        //SDL_Quit();
+    }
     
     
     // if player coord greater than 100, .setTex \
