@@ -24,6 +24,7 @@
 		A0A24DC52995A09D0060F6C2 /* KeyboardController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DC32995A09D0060F6C2 /* KeyboardController.cpp */; };
 		A0A24DC82996D8790060F6C2 /* ColliderComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DC62996D8790060F6C2 /* ColliderComponent.cpp */; };
 		A0A24DCB2996DF380060F6C2 /* Collision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DC92996DF380060F6C2 /* Collision.cpp */; };
+		A0A24DCE2998537F0060F6C2 /* AudioComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DCC2998537F0060F6C2 /* AudioComponent.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -70,6 +71,8 @@
 		A0A24DC72996D8790060F6C2 /* ColliderComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ColliderComponent.hpp; sourceTree = "<group>"; };
 		A0A24DC92996DF380060F6C2 /* Collision.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Collision.cpp; sourceTree = "<group>"; };
 		A0A24DCA2996DF380060F6C2 /* Collision.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Collision.hpp; sourceTree = "<group>"; };
+		A0A24DCC2998537F0060F6C2 /* AudioComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AudioComponent.cpp; sourceTree = "<group>"; };
+		A0A24DCD2998537F0060F6C2 /* AudioComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AudioComponent.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +155,8 @@
 				A0A24DC72996D8790060F6C2 /* ColliderComponent.hpp */,
 				A0A24DC92996DF380060F6C2 /* Collision.cpp */,
 				A0A24DCA2996DF380060F6C2 /* Collision.hpp */,
+				A0A24DCC2998537F0060F6C2 /* AudioComponent.cpp */,
+				A0A24DCD2998537F0060F6C2 /* AudioComponent.hpp */,
 			);
 			path = ECS;
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 				A0A24DBC299560130060F6C2 /* SpriteComponent.cpp in Sources */,
 				A0A24DC82996D8790060F6C2 /* ColliderComponent.cpp in Sources */,
 				A0A24DBF2995611B0060F6C2 /* PositionComponent.cpp in Sources */,
+				A0A24DCE2998537F0060F6C2 /* AudioComponent.cpp in Sources */,
 				A0A24DC2299594070060F6C2 /* Vector2D.cpp in Sources */,
 				A0A24DC52995A09D0060F6C2 /* KeyboardController.cpp in Sources */,
 				A0A24DB5299452AD0060F6C2 /* EntityComponentSystem.cpp in Sources */,

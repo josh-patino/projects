@@ -11,6 +11,7 @@
 #include "ECS/Components.hpp"
 #include "Vector2D.hpp"
 #include "Collision.hpp"
+#include "AudioComponent.hpp"
 
 //current possible game objects
 
@@ -22,7 +23,12 @@ Manager manager;
 
 auto& wall(manager.addEntity());
 auto& player(manager.addEntity());
+auto& mix_player(manager.addEntity());
 
+//sounds
+AudioComponent audio;
+//music
+//int music_1 =
 Game::Game(){
     
 }
@@ -54,19 +60,24 @@ void Game::init(const std::string& title, int xposition, int yposition, int widt
         _isRunning = false; 
         std::cerr << "SDL Library did NOT initilize!!" << std::endl;
     }
-    
     map = new Map();
     //Entity Componenet System Implemnation
+    //player entity
     player.addComponent<TransformComponent>(2);
     std::cout<<"Player is at 100,100" << std::endl;
     player.addComponent<SpriteComponent>("/Users/joshuapatino/Desktop/projects/projects/Resources/mario.png");
     player.addComponent<KeyboardController>();
-    player.addComponent<ColliderComponent>("player"); 
-    
+    player.addComponent<ColliderComponent>("player");
+
+    //walls entitty
     wall.addComponent<TransformComponent>(320.0f,320.f, 32, 32, 1);
     wall.addComponent<SpriteComponent>("/Users/joshuapatino/Desktop/projects/projects/Resources/dirt.png");
     wall.addComponent<ColliderComponent>("wall");
     
+    //audio
+    audio.LoadMusic("music", "/Users/joshuapatino/Desktop/projects/projects/Sounds_Songs/Level1.mp3");
+    audio.LoadEffect("wall_collision", "/Users/joshuapatino/Desktop/projects/projects/Sounds_Songs/smw_pipe.wav");
+    audio.PlayMusic("music");
     
 }
 void Game::pollEvents(){
@@ -86,6 +97,8 @@ void Game::updateGame(){
     manager.update(); //7
     
     if (Collision::AABB(player.getComponent<ColliderComponent>().boxCollider, wall.getComponent<ColliderComponent>().boxCollider)) {
+        audio.PlayEffect("wall_collision");
+        SDL_Delay(300);
         player.getComponent<TransformComponent>().scale = 1;
         player.getComponent<TransformComponent>().velocity_vector * -1; 
         std::cout << "player hit the wall" << std::endl;
@@ -116,6 +129,7 @@ void Game::memoryManagement(){
     SDL_DestroyWindow(_window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
+    //audio.Clean();
     std::cout << "scuesfully shut down, thanks for playing!"<<std::endl;
 }
 
