@@ -15,8 +15,10 @@
 
 class Component;
 class Entity;
+class Manager;
 
 using ComponentID = std::size_t;
+using Group = std::size_t;
 
 // Let's hide implementation details into an "Internal" namespace:
 namespace Internal {
@@ -36,14 +38,20 @@ inline ComponentID getComponentTypeID() noexcept {
         return typeID;
 }
 
-// Let's define a maximum number of components:
+// Let's define a maximum number of components, groups:
 constexpr std::size_t maxComponents{32};
+constexpr std::size_t maxGroups{32};
+
+//bitset for our groups:
+using GroupBitset = std::bitset<maxGroups>;
 
 // Let's typedef an `std::bitset` for our components:
 using ComponentBitset = std::bitset<maxComponents>;
 
 // And let's also typedef an `std::array` for them:
 using ComponentArray = std::array<Component*, maxComponents>;
+
+
 
 class Component {
 public:
@@ -58,16 +66,27 @@ public:
 
 class Entity {
 private:
+    Manager& manager;
     bool alive = true;
     std::vector<std::unique_ptr<Component>> components;
     
     ComponentArray componentArray; //quickly get component with ID
     ComponentBitset componentBitset; //check if the component exists
+    GroupBitset groupBitset; // each entity has a grouping
 public:
+    Entity(Manager& memberManager) : manager(memberManager) {}
     void update(){ for(auto& c : components) c->update(); }
     void draw() { for(auto& c : components) c->draw(); }
     bool isAlive() const {return alive;}
     void destroy() {alive = false;}
+    bool hasGroup(Group mGroup){
+        return groupBitset[mGroup];
+    }
+    
+    void addGroup(Group mGroup);
+    void deleteGroup(Group mGroup){
+        groupBitset[mGroup] = false;
+    }
     //check if entity has a componenet, query the bit set
     template<typename T>
     bool hasComponent() const {
@@ -106,11 +125,23 @@ public:
 class Manager {
 private:
     std::vector<std::unique_ptr<Entity>> entities;
+    std::array<std::vector<Entity*>, maxGroups> groupedEntites;
 public:
     void update() { for(auto& e : entities) e->update(); }
     void draw() {for(auto& e : entities) e->draw(); }
     
     void refresh(){
+        //remove entites in a group before refreshing
+        for(auto i(0u); i < maxGroups; i++) {
+            auto& v(groupedEntites[i]);
+            v.erase(
+                    std::remove_if(std::begin(v), std::end(v),
+                                   [i](Entity* mEntity) {
+                                       return !mEntity->isAlive() || !mEntity->hasGroup(i);
+                                   }),
+            std::end(v));
+        }
+        
         entities.erase( //remove entities if they are not alive
                 std::remove_if(std::begin(entities), std::end(entities),
                 [](const std::unique_ptr<Entity>& mEntity){
@@ -118,8 +149,16 @@ public:
                 }), std::end(entities));
     }
     
+    void addToGroup(Entity* mEntity, Group mGroup) {
+        groupedEntites[mGroup].emplace_back(mEntity);
+    }
+    
+    std::vector<Entity*>& getGroup(Group mGroup) {
+        return groupedEntites[mGroup];
+    }
+    
     Entity& addEntity(){
-        Entity* e = new Entity();
+        Entity* e = new Entity(*this);
         std::unique_ptr<Entity> uniquePtr{e};
         entities.emplace_back(std::move(uniquePtr));
         return *e;

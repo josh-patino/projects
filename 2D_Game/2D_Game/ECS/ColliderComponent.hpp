@@ -9,6 +9,7 @@
 #include <string>
 #include <SDL2/SDL.h>
 #include "Components.hpp"
+#include "TextureManager.hpp"
 
 class ColliderComponent : public Component {
 public:
@@ -27,6 +28,7 @@ public:
             
         }
         transform = &entity->getComponent<TransformComponent>();
+        Game::colliders.push_back(this); 
     }
     
     void update() override { //collider box == the player box 

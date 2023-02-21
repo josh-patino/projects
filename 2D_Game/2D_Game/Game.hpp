@@ -14,6 +14,10 @@
 #include <string>
 #include <SDL2_image/SDL_image.h>
 #include "TextureManager.hpp"
+#include <vector>
+
+class ColliderComponent;
+
 
 class Game {
 public:
@@ -26,8 +30,10 @@ public:
     void memoryManagement();
     inline bool running() {return _isRunning; }
     
+    static void addTile(int id, int x, int y); 
     static SDL_Renderer* renderer;
-    static SDL_Event event; 
+    static SDL_Event event;
+    static std::vector<ColliderComponent*> colliders;
     
 private:
     int _gameCounter; 

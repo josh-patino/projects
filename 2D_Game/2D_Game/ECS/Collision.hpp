@@ -8,9 +8,14 @@
 #pragma once
 #include <SDL2/SDL.h>
 
-class Collision {
+class ColliderComponent;
+
+class Collision
+{
 public:
-    static bool AABB(const SDL_Rect& rectA, SDL_Rect& rectB); //Axis Aligned Bounding Box, true collision or false
+    static bool AABB(const SDL_Rect& recA, const SDL_Rect& recB);  //Axis Aligned Bounding Box, true collision or false
+    static bool AABB(const ColliderComponent& colA, const ColliderComponent& colB);
+};
     //To check for collisions:
     
 //    if
@@ -19,4 +24,3 @@ public:
 //    (rectA.y+rectA.h) ≥ rectB.y &&
 //    (rectB.y + rectB.h) ≥ rectA.y
 //    If all are true, we have a collision
-};
