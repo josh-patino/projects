@@ -1,0 +1,24 @@
+<div class="searchButton">
+    <form #form="ngForm" (submit)="onSubmit()">
+    <input type = "text" placeholder="Search City" name="city"[(ngModel)]="city">
+</form>
+</div>
+
+<div class="myContainer">
+    <div class="card text-white bg-secondary m-5" style="max-width: 50rem;">
+        <div class="card-header">
+                <h2>{{cityName}}</h2>
+                <p><img src="{{iconURL}}" alt="weather image"></p>
+
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Current Outlook:</h5>
+          <p class="card-text">What's Outside: {{summary}}</p> 
+          <p class="card-text">The Temperature is  °{{temperature}} and  feels Like °{{feelsLikeTemp}}</p>
+          <p class="card-text">Current Wind Speed: {{windSpeed}} MPH, Current Wind Gusts: {{windGust}} MPH </p>
+          <p class="card-text">Pressure: {{pressure}} hPa</p>
+          <p class="card-text">Humidity: {{humidity}}%</p>
+        </div>
+      </div>
+    
+</div>

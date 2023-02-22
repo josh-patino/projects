@@ -1,0 +1,41 @@
+.myContainer {
+    width:100%;
+    font-size: 16;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 450px;
+    
+}
+.card-header {
+    text-align: center; 
+}
+
+.h2 {
+    text-align: center;
+    font-size: 500;
+    color: black;
+
+}
+
+.card-text {
+    text-align: center;
+}
+
+.searchButton {
+    margin-top: 100px;
+    text-align: center;
+}
+
+.searchButton input {
+    background-color: grey;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+    padding: 1em;
+    color: white;
+    font-size: 25;
+    text-align: center;
+}
