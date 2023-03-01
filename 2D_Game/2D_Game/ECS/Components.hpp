@@ -5,13 +5,13 @@
 //  Created by Joshua Patino on 2/8/23.
 //
 
-
-#pragma once
-#include "EntityComponentSystem.hpp"
-#include "TransformComponent.hpp"
-#include "SpriteComponent.hpp"
-#include "KeyboardController.hpp"
-#include "ColliderComponent.hpp"
-#include "TileComponent.hpp"
+//
+//#pragma once
+//#include "EntityComponentSystem.hpp"
+//#include "TransformComponent.hpp"
+//#include "SpriteComponent.h"
+//#include "KeyboardController.h"
+//#include "ColliderComponent.h"
+//#include "TileComponent.h"
 //#include "ProjectileComponent.h"
 //#include "UILabel.h"

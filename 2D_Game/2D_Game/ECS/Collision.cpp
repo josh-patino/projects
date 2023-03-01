@@ -8,23 +8,30 @@
 #include "Collision.hpp"
 #include "ColliderComponent.hpp"
 
-bool Collision::AABB(const SDL_Rect&rectA, const SDL_Rect &rectB){
+bool Collision::AABB(const SDL_Rect& recA, const SDL_Rect& recB)
+{
     if (
-        rectA.x + rectA.w >= rectB.x &&
-        rectB.x + rectB.w >= rectA.x &&
-        rectA.y + rectA.h >= rectB.y &&
-        rectB.y + rectB.h >= rectA.y
-        ) {
-            return true; //collision
+        recA.x + recA.w >= recB.x &&
+        recB.x + recB.w >= recA.x &&
+        recA.y + recA.h >= recB.y &&
+        recB.y + recB.h >= recA.y
+        )
+    {
+        return true;
     }
-    return false; //no collision
+
+    return false;
 }
 
-bool Collision::AABB(const ColliderComponent& colA, const ColliderComponent& colB) {
-    if (AABB(colA.boxCollider, colB.boxCollider)) {
-        std::cout << colA.entityTag << " hit " << colB.entityTag <<std::endl;
+bool Collision::AABB(const ColliderComponent& colA, const ColliderComponent& colB)
+{
+    if (AABB(colA.collider, colB.collider))
+    {
+        //std::cout << colA.tag << " hit: " << colB.tag << std::endl;
         return true;
-    } else {
+    }
+    else
+    {
         return false;
     }
 }

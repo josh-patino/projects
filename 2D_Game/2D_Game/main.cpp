@@ -5,35 +5,39 @@
 //  Created by Joshua Patino on 2/3/23.
 //
 
-#include <iostream>
 #include "Game.hpp"
-#include <vector>
 
-Game *game = nullptr; // instance object
+Game *game = nullptr;
 
-int main(int argc, const char * argv[]) {
-    // frame rate init
+int main(int argc, char *argv[])
+{
+
     const int FPS = 60;
     const int frameDelay = 1000 / FPS;
+
     Uint32 frameStart;
     int frameTime;
-    
-    game = new Game(); // new game
-    game->init("GameEngine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 640, false); 
-    while (game->running() ) {
-        frameStart = SDL_GetTicks(); // tick at start of frame
+
+    game = new Game();
+    game->init("Mario 2D", 800, 640, false);
+
+    while (game->running())
+    {
+
+        frameStart = SDL_GetTicks();
+
+        game->handleEvents();
+        game->update();
+        game->render();
+
+        frameTime = SDL_GetTicks() - frameStart;
         
-        game->pollEvents();
-        game->updateGame();
-        game -> render();
-        
-        frameTime = SDL_GetTicks() - frameStart; // tick TTL to process events, updates, render
-        
-        if (frameDelay > frameTime) {
-            SDL_Delay(frameDelay-frameTime);
+        if (frameDelay > frameTime)
+        {
+            SDL_Delay(frameDelay - frameTime);
         }
-        
     }
-    game->memoryManagement(); 
+
+    game->clean();
     return 0;
 }

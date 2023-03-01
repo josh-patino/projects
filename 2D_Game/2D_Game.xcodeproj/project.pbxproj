@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A01C1E69299BF10F005F65E3 /* TileComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A01C1E67299BF10F005F65E3 /* TileComponent.cpp */; };
-		A01C1E6F299FEA76005F65E3 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A01C1E6D299FEA76005F65E3 /* Animation.cpp */; };
 		A038C4A7298DC01B00AD7CE2 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A038C4A6298DC01B00AD7CE2 /* main.cpp */; };
 		A038C4B2298DC06300AD7CE2 /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A038C4AE298DC06300AD7CE2 /* SDL2_image.framework */; };
 		A038C4B3298DC06300AD7CE2 /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A038C4AF298DC06300AD7CE2 /* SDL2_mixer.framework */; };
@@ -19,14 +17,10 @@
 		A04AAA472991986400890E17 /* GameObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A04AAA452991986400890E17 /* GameObject.cpp */; };
 		A04AAA4A2992E76500890E17 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A04AAA482992E76500890E17 /* Map.cpp */; };
 		A0A24DB5299452AD0060F6C2 /* EntityComponentSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DB3299452AD0060F6C2 /* EntityComponentSystem.cpp */; };
-		A0A24DB8299452D00060F6C2 /* Components.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DB6299452D00060F6C2 /* Components.cpp */; };
-		A0A24DBC299560130060F6C2 /* SpriteComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DBA299560130060F6C2 /* SpriteComponent.cpp */; };
 		A0A24DBF2995611B0060F6C2 /* PositionComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DBD2995611B0060F6C2 /* PositionComponent.cpp */; };
 		A0A24DC2299594070060F6C2 /* Vector2D.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DC0299594070060F6C2 /* Vector2D.cpp */; };
-		A0A24DC52995A09D0060F6C2 /* KeyboardController.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DC32995A09D0060F6C2 /* KeyboardController.cpp */; };
-		A0A24DC82996D8790060F6C2 /* ColliderComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DC62996D8790060F6C2 /* ColliderComponent.cpp */; };
 		A0A24DCB2996DF380060F6C2 /* Collision.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DC92996DF380060F6C2 /* Collision.cpp */; };
-		A0A24DCE2998537F0060F6C2 /* AudioComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0A24DCC2998537F0060F6C2 /* AudioComponent.cpp */; };
+		A0B202DC29AE90DB00CEBB0C /* AssetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0B202DA29AE90DB00CEBB0C /* AssetManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,9 +36,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A01C1E67299BF10F005F65E3 /* TileComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = TileComponent.cpp; sourceTree = "<group>"; };
 		A01C1E68299BF10F005F65E3 /* TileComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TileComponent.hpp; sourceTree = "<group>"; };
-		A01C1E6D299FEA76005F65E3 /* Animation.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Animation.cpp; sourceTree = "<group>"; };
 		A01C1E6E299FEA76005F65E3 /* Animation.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Animation.hpp; sourceTree = "<group>"; };
 		A038C4A3298DC01B00AD7CE2 /* 2D_Game */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 2D_Game; sourceTree = BUILT_PRODUCTS_DIR; };
 		A038C4A6298DC01B00AD7CE2 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -63,22 +55,21 @@
 		A04AAA492992E76500890E17 /* Map.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Map.hpp; sourceTree = "<group>"; };
 		A0A24DB3299452AD0060F6C2 /* EntityComponentSystem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = EntityComponentSystem.cpp; sourceTree = "<group>"; };
 		A0A24DB4299452AD0060F6C2 /* EntityComponentSystem.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EntityComponentSystem.hpp; sourceTree = "<group>"; };
-		A0A24DB6299452D00060F6C2 /* Components.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Components.cpp; sourceTree = "<group>"; };
 		A0A24DB7299452D00060F6C2 /* Components.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Components.hpp; sourceTree = "<group>"; };
-		A0A24DBA299560130060F6C2 /* SpriteComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpriteComponent.cpp; sourceTree = "<group>"; };
 		A0A24DBB299560130060F6C2 /* SpriteComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpriteComponent.hpp; sourceTree = "<group>"; };
 		A0A24DBD2995611B0060F6C2 /* PositionComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = PositionComponent.cpp; sourceTree = "<group>"; };
 		A0A24DBE2995611B0060F6C2 /* TransformComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = TransformComponent.hpp; sourceTree = "<group>"; };
 		A0A24DC0299594070060F6C2 /* Vector2D.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Vector2D.cpp; sourceTree = "<group>"; };
 		A0A24DC1299594070060F6C2 /* Vector2D.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Vector2D.hpp; sourceTree = "<group>"; };
-		A0A24DC32995A09D0060F6C2 /* KeyboardController.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = KeyboardController.cpp; sourceTree = "<group>"; };
 		A0A24DC42995A09D0060F6C2 /* KeyboardController.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = KeyboardController.hpp; sourceTree = "<group>"; };
-		A0A24DC62996D8790060F6C2 /* ColliderComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ColliderComponent.cpp; sourceTree = "<group>"; };
 		A0A24DC72996D8790060F6C2 /* ColliderComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ColliderComponent.hpp; sourceTree = "<group>"; };
 		A0A24DC92996DF380060F6C2 /* Collision.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Collision.cpp; sourceTree = "<group>"; };
 		A0A24DCA2996DF380060F6C2 /* Collision.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Collision.hpp; sourceTree = "<group>"; };
-		A0A24DCC2998537F0060F6C2 /* AudioComponent.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AudioComponent.cpp; sourceTree = "<group>"; };
 		A0A24DCD2998537F0060F6C2 /* AudioComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AudioComponent.hpp; sourceTree = "<group>"; };
+		A0B202D529AE8FD400CEBB0C /* ProjectileComponent.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = ProjectileComponent.hpp; sourceTree = "<group>"; };
+		A0B202D829AE907E00CEBB0C /* UILabel.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = UILabel.hpp; sourceTree = "<group>"; };
+		A0B202DA29AE90DB00CEBB0C /* AssetManager.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = AssetManager.cpp; sourceTree = "<group>"; };
+		A0B202DB29AE90DB00CEBB0C /* AssetManager.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = AssetManager.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +118,8 @@
 				A04AAA43299195F800890E17 /* TextureManager.hpp */,
 				A04AAA452991986400890E17 /* GameObject.cpp */,
 				A04AAA462991986400890E17 /* GameObject.hpp */,
+				A0B202DA29AE90DB00CEBB0C /* AssetManager.cpp */,
+				A0B202DB29AE90DB00CEBB0C /* AssetManager.hpp */,
 			);
 			path = 2D_Game;
 			sourceTree = "<group>";
@@ -146,27 +139,22 @@
 			isa = PBXGroup;
 			children = (
 				A0A24DB7299452D00060F6C2 /* Components.hpp */,
-				A0A24DB6299452D00060F6C2 /* Components.cpp */,
 				A0A24DB4299452AD0060F6C2 /* EntityComponentSystem.hpp */,
 				A0A24DB3299452AD0060F6C2 /* EntityComponentSystem.cpp */,
-				A0A24DBA299560130060F6C2 /* SpriteComponent.cpp */,
 				A0A24DBB299560130060F6C2 /* SpriteComponent.hpp */,
 				A0A24DBD2995611B0060F6C2 /* PositionComponent.cpp */,
 				A0A24DBE2995611B0060F6C2 /* TransformComponent.hpp */,
 				A0A24DC0299594070060F6C2 /* Vector2D.cpp */,
 				A0A24DC1299594070060F6C2 /* Vector2D.hpp */,
-				A0A24DC32995A09D0060F6C2 /* KeyboardController.cpp */,
 				A0A24DC42995A09D0060F6C2 /* KeyboardController.hpp */,
-				A0A24DC62996D8790060F6C2 /* ColliderComponent.cpp */,
 				A0A24DC72996D8790060F6C2 /* ColliderComponent.hpp */,
 				A0A24DC92996DF380060F6C2 /* Collision.cpp */,
 				A0A24DCA2996DF380060F6C2 /* Collision.hpp */,
-				A0A24DCC2998537F0060F6C2 /* AudioComponent.cpp */,
 				A0A24DCD2998537F0060F6C2 /* AudioComponent.hpp */,
-				A01C1E67299BF10F005F65E3 /* TileComponent.cpp */,
 				A01C1E68299BF10F005F65E3 /* TileComponent.hpp */,
-				A01C1E6D299FEA76005F65E3 /* Animation.cpp */,
 				A01C1E6E299FEA76005F65E3 /* Animation.hpp */,
+				A0B202D529AE8FD400CEBB0C /* ProjectileComponent.hpp */,
+				A0B202D829AE907E00CEBB0C /* UILabel.hpp */,
 			);
 			path = ECS;
 			sourceTree = "<group>";
@@ -229,20 +217,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A0A24DCB2996DF380060F6C2 /* Collision.cpp in Sources */,
-				A01C1E69299BF10F005F65E3 /* TileComponent.cpp in Sources */,
 				A04AAA472991986400890E17 /* GameObject.cpp in Sources */,
 				A04AAA4A2992E76500890E17 /* Map.cpp in Sources */,
-				A0A24DB8299452D00060F6C2 /* Components.cpp in Sources */,
 				A038C4A7298DC01B00AD7CE2 /* main.cpp in Sources */,
 				A038C4B8298DC13300AD7CE2 /* Game.cpp in Sources */,
 				A04AAA44299195F800890E17 /* TextureManager.cpp in Sources */,
-				A0A24DBC299560130060F6C2 /* SpriteComponent.cpp in Sources */,
-				A0A24DC82996D8790060F6C2 /* ColliderComponent.cpp in Sources */,
 				A0A24DBF2995611B0060F6C2 /* PositionComponent.cpp in Sources */,
-				A0A24DCE2998537F0060F6C2 /* AudioComponent.cpp in Sources */,
+				A0B202DC29AE90DB00CEBB0C /* AssetManager.cpp in Sources */,
 				A0A24DC2299594070060F6C2 /* Vector2D.cpp in Sources */,
-				A0A24DC52995A09D0060F6C2 /* KeyboardController.cpp in Sources */,
-				A01C1E6F299FEA76005F65E3 /* Animation.cpp in Sources */,
 				A0A24DB5299452AD0060F6C2 /* EntityComponentSystem.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

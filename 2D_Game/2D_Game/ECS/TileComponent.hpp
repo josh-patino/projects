@@ -10,49 +10,43 @@
 #include "Vector2D.hpp"
 #include "Game.hpp"
 #include "TextureManager.hpp"
-
+#include "AssetManager.hpp"
 
 class TileComponent : public Component
 {
 public:
 
-    TransformComponent* transform;
-    SpriteComponent* sprite;
-    
-    const char* path;
-    SDL_Rect tileRect;
-    int tileID;
-    
+    SDL_Texture * texture;
+    SDL_Rect srcRect, destRect;
+    Vector2D position;
+
     TileComponent() = default;
-    
-    TileComponent(int xpos, int ypos, int width, int height, int id) {
-        tileRect.x = xpos;
-        tileRect.y = ypos;
-        tileRect.w = width;
-        tileRect.h = height;
-        tileID = id;
-        
-        switch (tileID) {
-            case 0:
-                path = "/Users/joshuapatino/Desktop/projects/projects/Resources/water.png";
-                break;
-            case 1:
-                path = "/Users/joshuapatino/Desktop/projects/projects/Resources/dirt.png";
-                break;
-            case 2:
-                path = "/Users/joshuapatino/Desktop/projects/projects/Resources/grass.png";
-            default:
-                break;
-        }
+
+    ~TileComponent()
+    {
+        SDL_DestroyTexture(texture);
     }
-    void init() override {
-        entity->addComponent<TransformComponent>((float)tileRect.x,(float)tileRect.y,tileRect.w,tileRect.h,1);
-        transform = &entity->getComponent<TransformComponent>();
-        
-        entity->addComponent<SpriteComponent>(path);
-        sprite = &entity->getComponent<SpriteComponent>();
-        
-        
+
+    TileComponent(int srcX, int srcY, int xpos, int ypos, int tsize, int tscale, std::string id)
+    {
+        texture = Game::assets->GetTexture(id);
+
+        srcRect.x = srcX;
+        srcRect.y = srcY;
+        srcRect.w = srcRect.h = tsize;
+        position.x = static_cast<float>(xpos);
+        position.y = static_cast<float>(ypos);
+        destRect.w = destRect.h = tsize * tscale;
+    }
+
+    void update() override
+    {
+        destRect.x = static_cast<int>(position.x - Game::camera.x);
+        destRect.y = static_cast<int>(position.y - Game::camera.y);
+    }
+    void draw() override
+    {
+        TextureManager::Draw(texture, srcRect, destRect, SDL_FLIP_NONE);
     }
 };
 

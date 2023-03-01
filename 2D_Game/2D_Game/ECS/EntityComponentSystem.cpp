@@ -10,6 +10,6 @@
 
 void Entity::addGroup(Group mGroup) {
     groupBitset[mGroup] = true;
-    manager.addToGroup(this, mGroup); 
+    manager.AddToGroup(this, mGroup); 
 }
 

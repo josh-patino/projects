@@ -1,188 +1,190 @@
-//
-//  Game.cpp
-//  2D_Game
-//
-//  Created by Joshua Patino on 2/3/23.
-//
-
 #include "Game.hpp"
 #include "TextureManager.hpp"
 #include "Map.hpp"
-#include "ECS/Components.hpp"
+//#include "Components.hpp"
 #include "Vector2D.hpp"
 #include "Collision.hpp"
-#include "AudioComponent.hpp"
-#include "TileComponent.hpp"
+#include "AssetManager.hpp"
+#include <sstream>
+#include "TransformComponent.hpp"
+#include "SpriteComponent.hpp"
 #include "KeyboardController.hpp"
-
-//current possible game objects
+#include "UILabel.hpp"
+#include "ColliderComponent.hpp"
 
 Map* map;
+Manager manager;
 
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
-Manager manager;
 
-std::vector<ColliderComponent*> Game::colliders; 
+SDL_Rect Game::camera = { 0,0,800,640 };
 
-auto& wall(manager.addEntity());
-auto& powerup(manager.addEntity());
+AssetManager* Game::assets = new AssetManager(&manager);
+
+bool Game::isRunning = false;
+
 auto& player(manager.addEntity());
-auto& mix_player(manager.addEntity());
+auto& label(manager.addEntity());
 
-enum groupLabels : std::size_t {
-    groupMap,
-    groupPlayers,
-    groupEnemies,
-    groupColliders,
-    groupPowerUps
-};
+Game::Game()
+{}
 
-//sounds
-AudioComponent audio;
-//music
-//int music_1 =
-Game::Game(){
-    
-}
+Game::~Game()
+{}
 
-Game::~Game(){
-    
-}
-void Game::init(const std::string& title, int xposition, int yposition, int width, int height, bool fullscreen){
+void Game::init(const char* title, int width, int height, bool fullscreen)
+{
     int flags = 0;
-    if (fullscreen) {
+    
+    if (fullscreen)
+    {
         flags = SDL_WINDOW_FULLSCREEN;
     }
-    
-    if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
-        std::cout << "SDL library initilized" <<std::endl;
-        _window = SDL_CreateWindow(title.c_str(), xposition, yposition, width, height, flags);
-        if (_window) {
-            std::cout<< "window loaded" <<std::endl;
-        } else{
-            std::cerr << "window was not created" <<std::endl;
-        }
-        renderer = SDL_CreateRenderer(_window, -1, 0);
-        if (renderer) {
-            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255); //white background
-            std::cout <<"renderer loaded" << std::endl;
-        }
-        _isRunning = true;
-    } else {
-        _isRunning = false; 
-        std::cerr << "SDL Library did NOT initilize!!" << std::endl;
-    }
-    map = new Map();
-    //Entity Componenet System Implemnation
-    Map::LoadMap("/Users/joshuapatino/Desktop/projects/projects/Resources/p16x16.txt", 16, 16);
-    //tile component
 
-    //player entity
-    player.addComponent<TransformComponent>(2);
-    std::cout<<"Player is at 100,100" << std::endl;
-    player.addComponent<SpriteComponent>("/Users/joshuapatino/Downloads/jSIxQuW_.png", true);
+    if (SDL_Init(SDL_INIT_EVERYTHING) == 0)
+    {
+        window = SDL_CreateWindow(title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, width, height, flags);
+        renderer = SDL_CreateRenderer(window, -1, 0);
+        if (renderer)
+        {
+            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        }
+
+        isRunning = true;
+    }
+
+    if (TTF_Init() == -1)
+    {
+        std::cout << "Error : SDL_TTF" << std::endl;
+    }
+
+    assets->AddTexture("terrain", "/Users/joshuapatino/Desktop/projects/projects/Resources/mario_terrain.png");
+    assets->AddTexture("player", "/Users/joshuapatino/Desktop/projects/projects/Resources/mario_animations.png");
+    assets->AddTexture("projectile", "/Users/joshuapatino/Downloads/assets/proj.png");
+
+    assets->AddFont("arial", "/Users/joshuapatino/Downloads/assets/arial.ttf", 16);
+
+    map = new Map("terrain", 3, 32);
+    //ecs implementation
+
+    map->LoadMap("/Users/joshuapatino/Downloads/assets/map.map", 25, 20);
+
+    player.addComponent<TransformComponent>(800.0f, 640.0f, 32 , 32, 4);
+    player.addComponent<SpriteComponent>("player", true);
     player.addComponent<KeyboardController>();
     player.addComponent<ColliderComponent>("player");
     player.addGroup(groupPlayers);
 
-    //walls entitty
-    wall.addComponent<TransformComponent>(320.0f,320.0f, 32, 32, 1);
-    wall.addComponent<SpriteComponent>("/Users/joshuapatino/Desktop/projects/projects/Resources/dirt.png");
-    wall.addComponent<ColliderComponent>("wall");
-    wall.addGroup(groupMap);
+    SDL_Color white = { 255, 255, 255, 255 };
     
-    //power up entity
-//    powerup.addComponent<TransformComponent>(600.0f,600.0f, 32,32,1);
-//    powerup.addComponent<SpriteComponent>("/Users/joshuapatino/Desktop/projects/projects/Resources/dirt.png");
-//    powerup.addComponent<ColliderComponent>("power_up");
-    
-    //audio
-    audio.LoadMusic("music", "/Users/joshuapatino/Desktop/projects/projects/Sounds_Songs/Level1.mp3");
-    audio.LoadEffect("wall_collision", "/Users/joshuapatino/Desktop/projects/projects/Sounds_Songs/smw_pipe.wav");
-    audio.LoadEffect("power_up", "/Users/joshuapatino/Desktop/projects/projects/Sounds_Songs/smw_power-up.wav");
-    audio.PlayMusic("music");
-    
+    label.addComponent<UILabel>(10, 10, "Test String", "arial", white);
+
+    assets->CreateProjectile(Vector2D(600, 600), Vector2D(2,0),200, 2, "projectile");
+    assets->CreateProjectile(Vector2D(600, 620), Vector2D(2, 0), 200, 2, "projectile");
+    assets->CreateProjectile(Vector2D(400, 600), Vector2D(2, 1), 200, 2, "projectile");
+    assets->CreateProjectile(Vector2D(600, 600), Vector2D(2, -1), 200, 2, "projectile");
+
 }
-void Game::pollEvents(){
+
+auto& tiles(manager.getGroup(Game::groupMap));
+auto& players(manager.getGroup(Game::groupPlayers));
+auto& colliders(manager.getGroup(Game::groupColliders));
+auto& projectiles(manager.getGroup(Game::groupProjectiles));
+
+void Game::handleEvents()
+{
+    
     SDL_PollEvent(&event);
-    switch (event.type) {
-        case SDL_QUIT:
-            _isRunning = false;
-            break;
-            
-        default:
-            break;
+
+    switch (event.type)
+    {
+    case SDL_QUIT :
+        isRunning = false;
+        break;
+    default:
+        break;
     }
 }
 
-void Game::updateGame(){
-    manager.refresh();//7
-    manager.update(); //7
+
+
+void Game::update()
+{
+
+    SDL_Rect playerCol = player.getComponent<ColliderComponent>().collider;
+    Vector2D playerPos = player.getComponent<TransformComponent>().position;
+
+    std::stringstream ss;
+    ss << "Player position: " << playerPos;
+    label.getComponent<UILabel>().SetLabelText(ss.str(), "arial");
+
+    manager.refresh();
+    manager.update();
+
     
-    //power up
-//    if (Collision::AABB(player.getComponent<ColliderComponent>().boxCollider, powerup.getComponent<ColliderComponent>().boxCollider)) {
-//        audio.PlayEffect("power_up");
-//        //ssSDL_Delay(300);
-//    }
-    
-    
-    //wall
-    for (auto cc: colliders) {
-        Collision::AABB(player.getComponent<ColliderComponent>(),*cc);
+    for (auto& c : colliders)
+    {
+        SDL_Rect cCol = c->getComponent<ColliderComponent>().collider;
+        if (Collision::AABB(cCol, playerCol))
+        {
+            player.getComponent<TransformComponent>().position = playerPos;
         }
+    }
+
+    for (auto& p : projectiles)
+    {
+        if (Collision::AABB(player.getComponent<ColliderComponent>().collider, p->getComponent<ColliderComponent>().collider))
+        {
+            std::cout << "Hit player!" << std::endl;
+            p->destroy();
+        }
+    }
+
+    camera.x = static_cast<int>(player.getComponent<TransformComponent>().position.x - 400);
+    camera.y = static_cast<int>(player.getComponent<TransformComponent>().position.y - 320);
+
+    if (camera.x < 0)
+        camera.x = 0;
+    if (camera.y < 0)
+        camera.y = 0;
+    if (camera.x > camera.w)
+        camera.x = camera.w;
+    if (camera.y > camera.h)
+        camera.y = camera.h;
 }
 
-//    audio.PlayEffect("wall_collision");
-//    SDL_Delay(300);
-//    player.getComponent<TransformComponent>().velocity_vector * -1;
-//    std::cout << "player hit the wall" << std::endl;
-//    //player.destroy();
-//    //SDL_Quit();
-    
-    // if player coord greater than 100, .setTex \
-    //for dying animation?
-    //player.getComponent<TransformComponent>().position_vector.Add(Vector2D(5,0));
-//    if (player.getComponent<TransformComponent>().position_vector.x > 100 ) {
-//        std::cout << "Player is greater than 100";
-//    }
-    
-
-auto& tiles(manager.getGroup(groupMap));
-auto& players(manager.getGroup(groupPlayers));
-auto& enemies(manager.getGroup(groupEnemies));
-
-
-
-void Game::render(){
+void Game::render()
+{
     SDL_RenderClear(renderer);
-    //render stuff
-    //painters algorithm, render/paint the back most element first, until getting to the player
-    //map->DrawMap();
-    for ( auto& t : tiles) {
+    for (auto& t : tiles)
+    {
         t->draw();
     }
-    for ( auto& p : players) {
+
+    for (auto& c : colliders)
+    {
+        c->draw();
+    }
+
+    for (auto& p : players)
+    {
         p->draw();
     }
-    for ( auto& e : enemies) {
-        e->draw();
+
+    for (auto& p : projectiles)
+    {
+        p->draw();
     }
-    //manager.draw();
+
+    label.draw();
+
     SDL_RenderPresent(renderer);
 }
 
-void Game::memoryManagement(){
-    SDL_DestroyWindow(_window);
+void Game::clean()
+{
+    SDL_DestroyWindow(window);
     SDL_DestroyRenderer(renderer);
     SDL_Quit();
-    //audio.Clean();
-    std::cout << "scuesfully shut down, thanks for playing!"<<std::endl;
-}
-
-void Game::addTile(int id, int x, int y){
-    auto& tile(manager.addEntity());
-    tile.addComponent<TileComponent>(x,y, 32,32,id);
-    tile.addGroup(groupMap);
-    
 }

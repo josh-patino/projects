@@ -4,18 +4,21 @@
 //
 //  Created by Joshua Patino on 2/17/23.
 //
-
 #pragma once
 
-struct Animation {
+struct Animation
+{
+
     int index;
-    int speed;
     int frames;
-    
+    int speed;
+
     Animation() {}
-    Animation(int i, int s, int f) {
+    Animation(int i, int f, int s)
+    {
         index = i;
         frames = f;
         speed = s;
     }
+
 };

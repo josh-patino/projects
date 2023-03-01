@@ -6,48 +6,57 @@
 //
 
 #pragma once
-#include "EntityComponentSystem.hpp"
+//#include "Components.hpp"
 #include "Vector2D.hpp"
+#include "EntityComponentSystem.hpp"
 
-class TransformComponent : public Component {
+class TransformComponent : public Component
+{
 public:
-    
-    Vector2D position_vector;
-    Vector2D velocity_vector;
-    
+    Vector2D position;
+    Vector2D velocity;
+
     int height = 32;
     int width = 32;
     int scale = 1;
+
     int speed = 3;
-    
-    TransformComponent(int sc) {
-        position_vector.Zero();
-        scale = sc; 
+
+    bool blocked = false;
+
+    TransformComponent()
+    {
+        position.Zero();
     }
-    
-    TransformComponent(){
-        position_vector.Zero();
+
+    TransformComponent(int sc)
+    {
+        position.Zero();
+        scale = sc;
     }
-    
-    TransformComponent(float x, float y) {
-        position_vector.Zero();
+
+    TransformComponent(float x, float y)
+    {
+        position.Zero();
     }
-    
-    TransformComponent(float x, float y, int h, int w, int sc) {
-        position_vector.x = x;
-        position_vector.y = y;
+
+    TransformComponent(float x, float y, int h, int w, int sc)
+    {
+        position.x = x;
+        position.y = y;
         height = h;
         width = w;
-        scale = sc; 
+        scale = sc;
     }
-    
-    void init() override {
-        velocity_vector.Zero(); 
+
+    void init() override
+    {
+        velocity.Zero();
     }
-    
-    void update() override {
-        position_vector.x += velocity_vector.x * speed;
-        position_vector.y += velocity_vector.y * speed;
+    void update() override
+    {
+        position.x += static_cast<int>(velocity.x * speed);
+        position.y += static_cast<int>(velocity.y * speed);
     }
-   
+
 };
