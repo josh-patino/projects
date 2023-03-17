@@ -11,6 +11,7 @@
 #include "KeyboardController.hpp"
 #include "UILabel.hpp"
 #include "ColliderComponent.hpp"
+#include "AudioComponent.hpp"
 
 Map* map;
 Manager manager;
@@ -68,7 +69,7 @@ void Game::init(const char* title, int width, int height, bool fullscreen)
     map = new Map("terrain", 3, 32);
     //ecs implementation
 
-    map->LoadMap("/Users/joshuapatino/Downloads/assets/map.map", 25, 20);
+    map->LoadMap("/Users/joshuapatino/Desktop/projects/projects/Resources/map.map", 25, 20);
 
     player.addComponent<TransformComponent>(800.0f, 640.0f, 32 , 32, 4);
     player.addComponent<SpriteComponent>("player", true);
