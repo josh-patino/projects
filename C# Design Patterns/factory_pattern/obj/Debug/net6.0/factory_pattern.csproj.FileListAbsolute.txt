@@ -1,0 +1,15 @@
+/Users/joshuapatino/Desktop/projects/projects/C# Design Patterns/factory_pattern/obj/Debug/net6.0/factory_pattern.csproj.AssemblyReference.cache
+/Users/joshuapatino/Desktop/projects/projects/C# Design Patterns/factory_pattern/obj/Debug/net6.0/factory_pattern.GeneratedMSBuildEditorConfig.editorconfig
+/Users/joshuapatino/Desktop/projects/projects/C# Design Patterns/factory_pattern/obj/Debug/net6.0/factory_pattern.AssemblyInfoInputs.cache
+/Users/joshuapatino/Desktop/projects/projects/C# Design Patterns/factory_pattern/obj/Debug/net6.0/factory_pattern.AssemblyInfo.cs
+/Users/joshuapatino/Desktop/projects/projects/C# Design Patterns/factory_pattern/obj/Debug/net6.0/factory_pattern.csproj.CoreCompileInputs.cache
+/Users/joshuapatino/Desktop/projects/projects/C# Design Patterns/factory_pattern/bin/Debug/net6.0/factory_pattern
+/Users/joshuapatino/Desktop/projects/projects/C# Design Patterns/factory_pattern/bin/Debug/net6.0/factory_pattern.deps.json
+/Users/joshuapatino/Desktop/projects/projects/C# Design Patterns/factory_pattern/bin/Debug/net6.0/factory_pattern.runtimeconfig.json
+/Users/joshuapatino/Desktop/projects/projects/C# Design Patterns/factory_pattern/bin/Debug/net6.0/factory_pattern.dll
+/Users/joshuapatino/Desktop/projects/projects/C# Design Patterns/factory_pattern/bin/Debug/net6.0/factory_pattern.pdb
+/Users/joshuapatino/Desktop/projects/projects/C# Design Patterns/factory_pattern/obj/Debug/net6.0/factory_pattern.dll
+/Users/joshuapatino/Desktop/projects/projects/C# Design Patterns/factory_pattern/obj/Debug/net6.0/refint/factory_pattern.dll
+/Users/joshuapatino/Desktop/projects/projects/C# Design Patterns/factory_pattern/obj/Debug/net6.0/factory_pattern.pdb
+/Users/joshuapatino/Desktop/projects/projects/C# Design Patterns/factory_pattern/obj/Debug/net6.0/factory_pattern.genruntimeconfig.cache
+/Users/joshuapatino/Desktop/projects/projects/C# Design Patterns/factory_pattern/obj/Debug/net6.0/ref/factory_pattern.dll

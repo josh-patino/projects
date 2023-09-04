@@ -1,6 +1,4 @@
 using System;
-using System;
-
 
 //fly duck behavior
 public interface FlyBehavior {
